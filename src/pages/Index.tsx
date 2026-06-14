@@ -21,42 +21,89 @@ type Tour = {
   region?: string;
 };
 
-const heroImg = 'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f2a257ab-31d3-45d0-9930-cc2f75f15328.jpg';
-const antalyaImg = 'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/045c3e28-3806-40bc-91bf-3c7d21074192.jpg';
-const dubaiImg = 'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/d81faa06-979e-47b3-97f8-8c2ada889aa8.jpg';
+// ─── ИЗОБРАЖЕНИЯ ────────────────────────────────────────────────────────────
+const IMG = {
+  hero:      'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f2a257ab-31d3-45d0-9930-cc2f75f15328.jpg',
+  antalya:   'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/045c3e28-3806-40bc-91bf-3c7d21074192.jpg',
+  dubai:     'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/d81faa06-979e-47b3-97f8-8c2ada889aa8.jpg',
+  istanbul:  'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/925b7d4d-9a35-4799-abe5-5b85a50d3983.jpg',
+  pattaya:   'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/88287376-5851-471f-a83e-58409503328f.jpg',
+  bali:      'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/3f15f18f-9088-4ffa-9887-ca46496cf3b4.jpg',
+  sochi:     'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/03139531-e36b-4158-8b56-9d353b78f703.jpg',
+  altai:     'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f9f27043-5243-4f5d-80e2-ad4d29552911.jpg',
+  maldives:  'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/2f31ff99-ae4c-4ca6-a521-babe2756bef0.jpg',
+  rome:      'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/9d8668b0-352c-47f9-9393-313c4368326a.jpg',
+  paris:     'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/d1fc4153-ec95-4561-87e0-06cd300479dc.jpg',
+  santorini: 'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/12da17d0-3054-4fde-919e-0d7964bd6bf4.jpg',
+  spb:       'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/3eac0a75-4b6d-48ca-8ee8-11d6d1fea446.jpg',
+  moscow:    'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/122f4293-cb97-4735-aa3c-c0720837a22a.jpg',
+  kazan:     'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f0e294e1-3efd-42ef-9659-818f519a91ba.jpg',
+  saudi:     'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/715a3cf5-9248-499b-8ef2-a048bd6bc9ec.jpg',
+  africa:    'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/c1ada701-5b15-4cbf-9467-df95dbf5dde7.jpg',
+  cruise:    'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f3248e3d-6c61-42a4-ae85-2147c95ec068.jpg',
+  barcelona: 'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/6dcd7fed-a2cc-4cf7-8ae0-0214c862620d.jpg',
+  abkhazia:  'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f069e7b1-f9f1-4fa6-b65e-c77596cdec42.jpg',
+};
 
+// ─── ГОРЯЩИЕ ТУРЫ ─────────────────────────────────────────────────────────
 const hotTours: Tour[] = [
-  { country: 'Турция', city: 'Анталия', nights: '7 ночей', price: '56 000 ₽', note: 'за двоих · вылет завтра', img: antalyaImg, badge: 'Горящий', region: 'Ближний Восток', description: 'Отель 5★ на первой линии с собственным песчаным пляжем. В стоимость входит перелёт, трансфер, проживание по системе «всё включено» и страховка. Вылет уже завтра из Москвы.' },
-  { country: 'Египет', city: 'Хургада', nights: '5 ночей', price: '49 000 ₽', note: 'вылет через 3 дня', img: heroImg, badge: 'Выгодно', region: 'Африка', description: 'Тёплое Красное море, коралловые рифы и отель 4★ с аквапарком. Включены перелёт, трансфер, питание «всё включено» и медстраховка. Идеально для семейного отдыха.' },
-  { country: 'ОАЭ', city: 'Дубай', nights: '7 ночей', price: '89 000 ₽', note: 'горящая путёвка', img: dubaiImg, badge: 'Хит', region: 'Ближний Восток', description: 'Роскошный отель в центре Дубая рядом с Burj Khalifa. Перелёт, трансфер, завтраки и экскурсия по городу в подарок. Шопинг, небоскрёбы и пустынное сафари.' },
+  { country: 'Турция', city: 'Анталия', nights: '7 ночей', price: '56 000 ₽', note: 'за двоих · вылет завтра', img: IMG.antalya, badge: 'Горящий', region: 'Ближний Восток', description: 'Отель 5★ на первой линии с собственным песчаным пляжем. В стоимость входит перелёт, трансфер, проживание по системе «всё включено» и страховка. Вылет уже завтра из Москвы.' },
+  { country: 'Египет', city: 'Хургада', nights: '5 ночей', price: '49 000 ₽', note: 'вылет через 3 дня', img: IMG.hero, badge: 'Выгодно', region: 'Африка', description: 'Тёплое Красное море, коралловые рифы и отель 4★ с аквапарком. Включены перелёт, трансфер, питание «всё включено» и медстраховка. Идеально для семейного отдыха.' },
+  { country: 'ОАЭ', city: 'Дубай', nights: '7 ночей', price: '89 000 ₽', note: 'горящая путёвка', img: IMG.dubai, badge: 'Хит', region: 'Ближний Восток', description: 'Роскошный отель в центре Дубая рядом с Burj Khalifa. Перелёт, трансфер, завтраки и экскурсия по городу в подарок. Шопинг, небоскрёбы и пустынное сафари.' },
 ];
 
+// ─── СТАМБУЛ (поиск) ───────────────────────────────────────────────────────
 const istanbulTours: Tour[] = [
-  { country: 'Турция', city: 'Стамбул', nights: '4 ночи', price: '38 000 ₽', note: 'отель 4★ в центре', img: heroImg, badge: 'Экскурсии', region: 'Европа', description: 'Обзорный тур по историческому центру: Голубая мечеть, Айя-София, дворец Топкапы и Гранд-базар. Отель 4★ в районе Султанахмет, завтраки включены, перелёт и трансфер.' },
-  { country: 'Турция', city: 'Стамбул', nights: '6 ночей', price: '54 000 ₽', note: 'шопинг-тур', img: antalyaImg, badge: 'Шопинг', region: 'Европа', description: 'Шопинг-тур с проживанием рядом с торговыми кварталами Таксим и Истикляль. Включены перелёт, трансфер, отель 4★ и завтраки. Время на покупки и прогулки по Босфору.' },
-  { country: 'Турция', city: 'Стамбул', nights: '5 ночей', price: '46 000 ₽', note: 'гастротур', img: dubaiImg, badge: 'Гастро', region: 'Европа', description: 'Гастрономический тур: дегустации турецкой кухни, кофейные церемонии и круиз по Босфору с ужином. Отель 4★, завтраки, перелёт и трансфер включены.' },
+  { country: 'Турция', city: 'Стамбул', nights: '4 ночи', price: '38 000 ₽', note: 'отель 4★ в центре', img: IMG.istanbul, badge: 'Экскурсии', region: 'Европа', description: 'Обзорный тур по историческому центру: Голубая мечеть, Айя-София, дворец Топкапы и легендарный Гранд-базар. Отель 4★ в районе Султанахмет, завтраки, перелёт и трансфер включены.' },
+  { country: 'Турция', city: 'Стамбул', nights: '6 ночей', price: '54 000 ₽', note: 'шопинг-тур', img: IMG.istanbul, badge: 'Шопинг', region: 'Европа', description: 'Шопинг-тур с проживанием рядом с торговыми кварталами Таксим и Истикляль. Перелёт, трансфер, отель 4★ и завтраки включены. Прогулки по Босфору и Египетскому базару.' },
+  { country: 'Турция', city: 'Стамбул', nights: '5 ночей', price: '46 000 ₽', note: 'гастротур', img: IMG.istanbul, badge: 'Гастро', region: 'Европа', description: 'Гастрономический тур: дегустации турецкой кухни, кофейные церемонии и круиз по Босфору с ужином под звёздами. Отель 4★, завтраки, перелёт и трансфер.' },
 ];
 
-const summerPlans = [
-  { title: 'Сочи + Абхазия', desc: 'Автобусный тур вдоль побережья', icon: 'Bus', color: 'bg-brand-orange' },
-  { title: 'Мальдивы', desc: 'Раннее бронирование со скидкой', icon: 'Palmtree', color: 'bg-brand-blue' },
-  { title: 'Алтай', desc: 'Пешие походы с гидом', icon: 'Mountain', color: 'bg-brand-orange' },
+// ─── ПЛАНЫ НА ЛЕТО — данные для карточек ──────────────────────────────────
+const summerPlanTours: Record<string, Tour[]> = {
+  'Сочи + Абхазия': [
+    { country: 'Россия', city: 'Сочи', nights: '5 ночей', price: '28 000 ₽', note: 'Черноморское побережье', img: IMG.sochi, badge: 'Пляж', description: 'Тёплое Чёрное море, набережная и горы в одном месте. Отель 3★ у пляжа, завтраки, трансфер от аэропорта. Посещение Красной Поляны и дельфинария.' },
+    { country: 'Абхазия', city: 'Гагра', nights: '4 ночи', price: '22 000 ₽', note: 'дикая природа', img: IMG.abkhazia, badge: 'Природа', description: 'Кипарисовые набережные, озеро Рица и водопады. Гостевой дом у моря, питание 3 раза в день, экскурсии с гидом. Незабываемая природа Кавказа.' },
+  ],
+  'Мальдивы': [
+    { country: 'Мальдивы', city: 'Атолл Мале', nights: '7 ночей', price: '98 000 ₽', note: 'раннее бронирование −20%', img: IMG.maldives, badge: 'Раннее бронирование', description: 'Успейте забронировать по специальной цене! Вилла над бирюзовой лагуной, снорклинг с черепахами и манта-скатами. Перелёт, трансфер на катере и завтраки включены. Скидка действует до конца месяца.' },
+    { country: 'Мальдивы', city: 'Атолл Ари', nights: '10 ночей', price: '140 000 ₽', note: 'люкс · раннее бронирование', img: IMG.maldives, badge: 'Люкс', description: 'Эксклюзивный резорт 5★ с собственным рифом. Бунгало на воде с панорамными окнами, дайвинг, СПА и изысканная кухня. Раннее бронирование — лучшее размещение по сниженной цене.' },
+  ],
+  'Алтай': [
+    { country: 'Россия', city: 'Горно-Алтайск', nights: '7 ночей', price: '38 000 ₽', note: 'треккинг с гидом', img: IMG.altai, badge: 'Поход', description: 'Пешие маршруты по горному Алтаю с опытным гидом: ледники, альпийские луга и водопады. Проживание на турбазе, питание и снаряжение входят в стоимость. Маршруты для разных уровней подготовки.' },
+    { country: 'Россия', city: 'Чемал', nights: '5 ночей', price: '29 000 ₽', note: 'экстрим и природа', img: IMG.altai, badge: 'Экстрим', description: 'Рафтинг по горным рекам, конные прогулки и восхождения. Уютные домики в горах, костёр, свежий воздух и звёздное небо. Идеально для любителей активного отдыха.' },
+  ],
+};
+
+// ─── СЛЕТАТЬ РАЗВЛЕЧЬСЯ ───────────────────────────────────────────────────
+const funTripTours: Record<string, Tour> = {
+  'Стамбул': {
+    country: 'Турция', city: 'Стамбул — Гранд-базар', nights: '4 ночи', price: '42 000 ₽', note: 'шопинг и гастрономия',
+    img: IMG.istanbul, badge: 'Развлечения',
+    description: 'Гранд-базар — крупнейший крытый рынок мира с 4 000 лавок: специи, ковры, украшения, кожа и керамика. Тур включает шопинг-экскурсию с гидом, дегустации турецких сладостей, прогулку по Босфору и отель 4★ в историческом центре.',
+  },
+  'Паттайя': {
+    country: 'Таиланд', city: 'Паттайя', nights: '7 ночей', price: '75 000 ₽', note: 'ночная жизнь и пляжи',
+    img: IMG.pattaya, badge: 'Ночная жизнь',
+    description: 'Паттайя — столица ночных развлечений Юго-Восточной Азии. Знаменитая Walking Street, beach clubs, шоу кабаре Альказар, аква-парки и снорклинг на островах. Отель 4★ у пляжа, перелёт и трансфер включены.',
+  },
+  'Бали': {
+    country: 'Индонезия', city: 'Бали', nights: '10 ночей', price: '95 000 ₽', note: 'сёрфинг, йога, природа',
+    img: IMG.bali, badge: 'Активный',
+    description: 'Бали — рай для сёрферов и любителей йоги. Легендарные волны Куты и Улувату, занятия с инструктором по сёрфингу, утренняя йога с видом на рисовые террасы. Вилла 4★ с бассейном, перелёт и трансфер включены.',
+  },
+};
+
+// ─── КАРТА ЦЕН ────────────────────────────────────────────────────────────
+const priceMapData: Array<{ country: string; price: string; img: string; description: string; icon: string }> = [
+  { country: 'Турция', price: 'от 40 000 ₽', img: IMG.antalya, icon: 'Plane', description: 'Анталия, Кемер, Бодрум — пляжный отдых «всё включено», 7 ночей от 40 000 ₽ за двоих. Вылеты ежедневно.' },
+  { country: 'Египет', price: 'от 50 000 ₽', img: IMG.hero, icon: 'Plane', description: 'Хургада и Шарм-эль-Шейх — Красное море, кораллы и солнце 365 дней в году. Туры от 50 000 ₽ за двоих, 7 ночей.' },
+  { country: 'Таиланд', price: 'от 80 000 ₽', img: IMG.bali, icon: 'Plane', description: 'Пхукет и Самуи — тропические пляжи, экзотика и тайская кухня. 10 ночей от 80 000 ₽ с перелётом.' },
+  { country: 'Мальдивы', price: 'от 120 000 ₽', img: IMG.maldives, icon: 'Plane', description: 'Атоллы Мале и Ари — роскошные резорты над водой, кристальный океан. 7 ночей от 120 000 ₽ с перелётом Москва–Мале.' },
+  { country: 'ОАЭ', price: 'от 70 000 ₽', img: IMG.dubai, icon: 'Plane', description: 'Дубай и Абу-Даби — небоскрёбы, шопинг-молы и пустынные сафари. 7 ночей от 70 000 ₽ с перелётом из Москвы.' },
 ];
 
-const funTrips = [
-  { title: 'Стамбул', desc: 'Шопинг и вкусная еда', icon: 'ShoppingBag' },
-  { title: 'Паттайя', desc: 'Тусовки до утра', icon: 'PartyPopper' },
-  { title: 'Бали', desc: 'Сёрфинг и йога', icon: 'Waves' },
-];
-
-const priceMap = [
-  { country: 'Турция', price: 'от 40 000 ₽' },
-  { country: 'Египет', price: 'от 50 000 ₽' },
-  { country: 'Таиланд', price: 'от 80 000 ₽' },
-  { country: 'Мальдивы', price: 'от 120 000 ₽' },
-  { country: 'ОАЭ', price: 'от 70 000 ₽' },
-];
-
+// ─── НАПРАВЛЕНИЯ ─────────────────────────────────────────────────────────
 const directions = [
   { name: 'Европа', icon: 'Landmark' },
   { name: 'Азия', icon: 'TreePalm' },
@@ -69,35 +116,65 @@ const directions = [
   { name: 'Лечение', icon: 'HeartPulse' },
 ];
 
+const directionTours: Record<string, Tour[]> = {
+  'Европа': [
+    { country: 'Италия', city: 'Рим + Флоренция', nights: '7 ночей', price: '89 000 ₽', note: 'экскурсионный тур', img: IMG.rome, badge: 'Культура', description: 'Колизей, Ватикан, галерея Уффици и каналы Венеции. Отель 4★ в центре Рима, перелёт, трансфер и русскоязычный гид. Незабываемое погружение в историю Европы.' },
+    { country: 'Франция', city: 'Париж', nights: '5 ночей', price: '95 000 ₽', note: 'романтический тур', img: IMG.paris, badge: 'Романтика', description: 'Эйфелева башня, Лувр, Монмартр и прогулка на кораблике по Сене. Отель 4★ рядом с Champs-Élysées, завтраки и перелёт включены. Идеальный выбор для пар.' },
+    { country: 'Греция', city: 'Санторини', nights: '7 ночей', price: '78 000 ₽', note: 'острова Эгейского моря', img: IMG.santorini, badge: 'Острова', description: 'Белоснежные домики с синими куполами над Эгейским морем, вулканические пляжи и знаменитые закаты в Ойе. Отель 4★, завтраки, перелёт и трансфер.' },
+  ],
+  'Азия': [
+    { country: 'Таиланд', city: 'Пхукет', nights: '9 ночей', price: '85 000 ₽', note: 'отель 4★', img: IMG.bali, badge: 'Хит', description: 'Белоснежные пляжи Андаманского моря, снорклинг на островах Пхи-Пхи, тайский массаж и уличная кухня. Отель 4★, перелёт и трансфер включены.' },
+    { country: 'Индонезия', city: 'Бали', nights: '10 ночей', price: '92 000 ₽', note: 'сёрфинг и йога', img: IMG.bali, badge: 'Активный', description: 'Остров богов: рисовые террасы Убуда, волны Куты, храмы на закате. Вилла с бассейном 4★, перелёт, трансфер и страховка в стоимости.' },
+  ],
+  'Россия': [
+    { country: 'Россия', city: 'Санкт-Петербург', nights: '4 ночи', price: '32 000 ₽', note: 'культурная столица', img: IMG.spb, badge: 'Культура', description: 'Эрмитаж, Петергоф, Исаакиевский собор и белые ночи. Отель 4★ в центре, завтраки и экскурсия с гидом. Жемчужина России на Неве.' },
+    { country: 'Россия', city: 'Москва', nights: '3 ночи', price: '24 000 ₽', note: 'столичный уик-энд', img: IMG.moscow, badge: 'Столица', description: 'Красная площадь, Кремль, Третьяковка и парк Зарядье. Отель 4★ в пешей доступности от центра, завтраки. Отличный вариант для культурного уик-энда.' },
+    { country: 'Россия', city: 'Казань', nights: '3 ночи', price: '22 000 ₽', note: 'третья столица России', img: IMG.kazan, badge: 'История', description: 'Казанский Кремль, Голубая мечеть Кул-Шариф, башня Сююмбике и татарская кухня. Отель 3★ в историческом центре, завтраки и экскурсия.' },
+  ],
+  'Ближний Восток': [
+    { country: 'ОАЭ', city: 'Дубай', nights: '7 ночей', price: '89 000 ₽', note: 'город будущего', img: IMG.dubai, badge: 'Люкс', description: 'Burj Khalifa, Palm Jumeirah, торговые молы и пустынное сафари. Отель 5★, перелёт, трансфер и завтраки включены.' },
+    { country: 'Саудовская Аравия', city: 'Эр-Рияд', nights: '5 ночей', price: '75 000 ₽', note: 'открытие страны', img: IMG.saudi, badge: 'Новинка', description: 'Саудовская Аравия открылась для туристов! Kingdom Tower, древний город Дирия, традиционные рынки и пустыня Руб-эль-Хали. Отель 5★, перелёт и трансфер.' },
+  ],
+  'Острова': [
+    { country: 'Мальдивы', city: 'Атолл Мале', nights: '7 ночей', price: '120 000 ₽', note: 'вилла над водой', img: IMG.maldives, badge: 'Люкс', description: 'Бунгало над бирюзовой лагуной, снорклинг с черепахами и манта-скатами. Перелёт Москва–Мале, трансфер на катере, завтраки включены.' },
+    { country: 'Греция', city: 'Санторини', nights: '6 ночей', price: '78 000 ₽', note: 'острова Эгейского моря', img: IMG.santorini, badge: 'Острова', description: 'Вулканические пляжи с красным и чёрным песком, знаменитые закаты в Ойе и вина местных виноградников. Отель 4★, завтраки и перелёт.' },
+  ],
+  'Африка': [
+    { country: 'Египет', city: 'Хургада', nights: '5 ночей', price: '49 000 ₽', note: 'Красное море', img: IMG.hero, badge: 'Пляж', description: 'Тёплое Красное море с богатейшим подводным миром, коралловые рифы, отель 4★ с аквапарком. Перелёт, трансфер и питание «всё включено».' },
+    { country: 'Кения', city: 'Масаи Мара', nights: '8 ночей', price: '145 000 ₽', note: 'сафари', img: IMG.africa, badge: 'Сафари', description: 'Сафари в самом знаменитом заповеднике Африки: большая пятёрка, миграция гну, закат над саванной. Лодж в национальном парке, перелёт и гид включены.' },
+  ],
+  'Круизы': [
+    { country: 'Средиземное море', city: 'Круиз Италия–Греция', nights: '8 ночей', price: '98 000 ₽', note: 'лайнер 5★', img: IMG.cruise, badge: 'Круиз', description: 'Морской круиз на лайнере 5★ с заходом в Рим, Барселону, Афины и острова Греции. Каюта с иллюминатором, питание и развлечения на борту включены.' },
+    { country: 'Норвегия', city: 'Фьорды Норвегии', nights: '7 ночей', price: '120 000 ₽', note: 'северное сияние', img: IMG.cruise, badge: 'Природа', description: 'Круиз по норвежским фьордам с шансом увидеть северное сияние. Города Берген и Тромсё, водопады и горные пейзажи. Каюта с видом, питание включено.' },
+  ],
+  'Экскурсии': [
+    { country: 'Испания', city: 'Барселона', nights: '6 ночей', price: '82 000 ₽', note: 'архитектура и культура', img: IMG.barcelona, badge: 'Экскурсия', description: 'Саграда Фамилия, Парк Гуэль, Готический квартал и пляж Барселонета. Экскурсионный тур с русскоязычным гидом, отель 4★ в центре, перелёт и завтраки.' },
+    { country: 'Испания', city: 'Мадрид + Толедо', nights: '5 ночей', price: '75 000 ₽', note: 'история Испании', img: IMG.barcelona, badge: 'История', description: 'Прадо, дворец Буэн-Ретиро, корида и средневековый Толедо. Тур с гидом по двум столицам испанской истории. Отель 4★, завтраки и перелёт включены.' },
+  ],
+  'Лечение': [
+    { country: 'Чехия', city: 'Карловы Вары', nights: '10 ночей', price: '95 000 ₽', note: 'санаторий', img: IMG.paris, badge: 'СПА', description: 'Лечебные минеральные источники, питьевые галереи и процедуры в санаториях Карловых Вар. Перелёт, проживание в санатории с питанием 3 раза в день.' },
+  ],
+};
+
 const seasonOffers = {
   summer: ['Греция, острова — от 55 000 ₽', 'Турция, Кемер — от 42 000 ₽', 'Сочи, лето — от 28 000 ₽'],
   winter: ['ОАЭ, Дубай — от 70 000 ₽', 'Таиланд, Пхукет — от 85 000 ₽', 'Мальдивы — от 120 000 ₽'],
 };
 
-const directionTours: Record<string, Tour[]> = {
-  'Европа': istanbulTours,
-  'Азия': [
-    { country: 'Таиланд', city: 'Пхукет', nights: '9 ночей', price: '85 000 ₽', note: 'отель 4★', img: heroImg, badge: 'Хит', description: 'Белоснежные пляжи Андаманского моря, отель 4★, перелёт и трансфер включены. Экзотические экскурсии на острова Пхи-Пхи.' },
-    { country: 'Вьетнам', city: 'Нячанг', nights: '10 ночей', price: '92 000 ₽', note: 'всё включено', img: antalyaImg, badge: 'Море', description: 'Долгий пляжный отдых на побережье Южно-Китайского моря с системой «всё включено». Перелёт, трансфер и страховка в стоимости.' },
-  ],
-  'Россия': [
-    { country: 'Россия', city: 'Сочи', nights: '7 ночей', price: '28 000 ₽', note: 'отель у моря', img: heroImg, badge: 'Бюджетно', description: 'Отдых на Черноморском побережье: отель рядом с пляжем, завтраки и трансфер. Прогулки по Красной Поляне и Олимпийскому парку.' },
-    { country: 'Россия', city: 'Алтай', nights: '6 ночей', price: '34 000 ₽', note: 'пешие походы', img: antalyaImg, badge: 'Активный', description: 'Пешие походы с гидом по горам Алтая, проживание на турбазе, питание и снаряжение включены. Природа, реки и чистый воздух.' },
-  ],
-  'Ближний Восток': hotTours.filter((t) => t.region === 'Ближний Восток'),
-  'Острова': [
-    { country: 'Мальдивы', city: 'Атолл Мале', nights: '7 ночей', price: '120 000 ₽', note: 'вилла над водой', img: heroImg, badge: 'Люкс', description: 'Бунгало над бирюзовой лагуной, белоснежные пляжи и снорклинг с черепахами. Перелёт, трансфер на катере и завтраки включены.' },
-  ],
-  'Африка': hotTours.filter((t) => t.region === 'Африка'),
-  'Круизы': [
-    { country: 'Средиземное море', city: 'Круиз', nights: '8 ночей', price: '98 000 ₽', note: 'лайнер 5★', img: dubaiImg, badge: 'Круиз', description: 'Морской круиз по Средиземноморью с заходом в Италию, Грецию и Испанию. Каюта на лайнере 5★, питание и развлечения включены.' },
-  ],
-  'Экскурсии': istanbulTours.filter((t) => t.badge === 'Экскурсии'),
-  'Лечение': [
-    { country: 'Чехия', city: 'Карловы Вары', nights: '10 ночей', price: '95 000 ₽', note: 'санаторий', img: antalyaImg, badge: 'СПА', description: 'Оздоровительный тур на термальный курорт: лечебные минеральные источники, СПА-процедуры и проживание в санатории. Перелёт включён.' },
-  ],
-};
+// ─── ПЛАНЫ НА ЛЕТО (карточки) ─────────────────────────────────────────────
+const summerPlans = [
+  { title: 'Сочи + Абхазия', desc: 'Автобусный тур вдоль побережья', icon: 'Bus', color: 'bg-brand-orange' },
+  { title: 'Мальдивы', desc: 'Раннее бронирование со скидкой', icon: 'Palmtree', color: 'bg-brand-blue' },
+  { title: 'Алтай', desc: 'Пешие походы с гидом', icon: 'Mountain', color: 'bg-brand-orange' },
+];
 
+const funTrips = [
+  { title: 'Стамбул', desc: 'Шопинг и вкусная еда', icon: 'ShoppingBag' },
+  { title: 'Паттайя', desc: 'Тусовки до утра', icon: 'PartyPopper' },
+  { title: 'Бали', desc: 'Сёрфинг и йога', icon: 'Waves' },
+];
+
+// ─── КОМПОНЕНТ ────────────────────────────────────────────────────────────
 const Index = () => {
   const [people, setPeople] = useState(2);
   const [date, setDate] = useState<Date | undefined>();
@@ -105,12 +182,20 @@ const Index = () => {
   const [activeDir, setActiveDir] = useState<string | null>(null);
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
   const [showSearch, setShowSearch] = useState(false);
+  const [activeSummer, setActiveSummer] = useState<string | null>(null);
 
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   const handleSearch = () => {
     setShowSearch(true);
     setTimeout(() => document.getElementById('search-results')?.scrollIntoView({ behavior: 'smooth' }), 50);
+  };
+
+  const handleSummerPlan = (title: string) => {
+    setActiveSummer(activeSummer === title ? null : title);
+    if (activeSummer !== title) {
+      setTimeout(() => document.getElementById('summer-tours')?.scrollIntoView({ behavior: 'smooth' }), 50);
+    }
   };
 
   return (
@@ -145,7 +230,7 @@ const Index = () => {
       {/* HERO + SEARCH */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImg} alt="Путешествия" className="w-full h-full object-cover" />
+          <img src={IMG.hero} alt="Путешествия" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-background" />
         </div>
         <div className="relative container pt-20 pb-12 md:pt-28 md:pb-16">
@@ -218,28 +303,7 @@ const Index = () => {
         <SectionTitle eyebrow="Успей забронировать" title="Горящие туры" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
           {hotTours.map((t) => (
-            <div key={t.country} className="bg-card rounded-3xl overflow-hidden shadow-card hover-lift">
-              <div className="relative h-52">
-                <img src={t.img} alt={t.country} className="w-full h-full object-cover" />
-                <span className="absolute top-4 left-4 bg-brand-orange text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
-                  <Icon name="Flame" size={14} /> {t.badge}
-                </span>
-                <span className="absolute top-4 right-4 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-brand-blue">
-                  <Icon name="Info" size={16} />
-                </span>
-              </div>
-              <div className="p-6">
-                <div className="flex items-baseline justify-between">
-                  <h3 className="font-display font-bold text-xl">{t.country}</h3>
-                  <span className="text-brand-blue font-semibold">{t.city}</span>
-                </div>
-                <p className="text-muted-foreground text-sm mt-1">{t.nights} · {t.note}</p>
-                <div className="flex items-center justify-between mt-5">
-                  <span className="font-display font-extrabold text-2xl text-brand-orange">{t.price}</span>
-                  <Button onClick={() => setSelectedTour(t)} className="rounded-full bg-brand-blue hover:bg-brand-blue/90 text-white">Подробнее</Button>
-                </div>
-              </div>
-            </div>
+            <TourCard key={t.country + t.city} t={t} onMore={() => setSelectedTour(t)} />
           ))}
         </div>
       </section>
@@ -249,17 +313,32 @@ const Index = () => {
         <SectionTitle eyebrow="Идеи путешествий" title="Планы на лето" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
           {summerPlans.map((p) => (
-            <div key={p.title} className="bg-card rounded-3xl p-7 shadow-card hover-lift flex items-start gap-4">
-              <div className={`${p.color} w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 text-white shadow-soft`}>
-                <Icon name={p.icon} size={26} />
+            <button
+              key={p.title}
+              onClick={() => handleSummerPlan(p.title)}
+              className={`rounded-3xl p-7 shadow-card hover-lift flex items-start gap-4 text-left transition-colors w-full ${activeSummer === p.title ? 'bg-brand-orange text-white' : 'bg-card'}`}
+            >
+              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-soft ${activeSummer === p.title ? 'bg-white/25' : p.color}`}>
+                <Icon name={p.icon} size={26} className="text-white" />
               </div>
               <div>
                 <h3 className="font-display font-bold text-lg">{p.title}</h3>
-                <p className="text-muted-foreground text-sm mt-1">{p.desc}</p>
+                <p className={`text-sm mt-1 ${activeSummer === p.title ? 'text-white/80' : 'text-muted-foreground'}`}>{p.desc}</p>
               </div>
-            </div>
+            </button>
           ))}
         </div>
+
+        {activeSummer && (
+          <div id="summer-tours" className="mt-8 animate-fade-up">
+            <p className="text-center font-display font-bold text-xl mb-6">Туры · {activeSummer}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {summerPlanTours[activeSummer]?.map((t) => (
+                <TourCard key={t.city + t.nights} t={t} onMore={() => setSelectedTour(t)} />
+              ))}
+            </div>
+          </div>
+        )}
       </section>
 
       {/* FUN TRIPS */}
@@ -268,13 +347,17 @@ const Index = () => {
           <SectionTitle eyebrow="Для настроения" title="Слетать развлечься" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
             {funTrips.map((f) => (
-              <div key={f.title} className="bg-card rounded-3xl p-7 shadow-card hover-lift text-center">
+              <button
+                key={f.title}
+                onClick={() => setSelectedTour(funTripTours[f.title])}
+                className="bg-card rounded-3xl p-7 shadow-card hover-lift text-center w-full"
+              >
                 <div className="mx-auto w-16 h-16 rounded-2xl bg-brand-orange/15 text-brand-orange flex items-center justify-center mb-4">
                   <Icon name={f.icon} size={30} />
                 </div>
                 <h3 className="font-display font-bold text-xl">{f.title}</h3>
                 <p className="text-muted-foreground mt-1">{f.desc}</p>
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -300,14 +383,23 @@ const Index = () => {
       <section className="container pb-16 md:pb-20">
         <SectionTitle eyebrow="Сравни направления" title="Карта цен" />
         <div className="flex gap-5 overflow-x-auto pb-4 mt-10 no-scrollbar snap-x">
-          {priceMap.map((p) => (
-            <div key={p.country} className="snap-start shrink-0 w-64 bg-card rounded-3xl p-6 shadow-card hover-lift">
-              <div className="w-12 h-12 rounded-2xl bg-brand-blue/15 text-brand-blue flex items-center justify-center">
-                <Icon name="Plane" size={24} />
+          {priceMapData.map((p) => (
+            <button
+              key={p.country}
+              onClick={() => setSelectedTour({ country: p.country, city: p.country, nights: '7 ночей', price: p.price, note: 'от', img: p.img, badge: 'Туры', description: p.description })}
+              className="snap-start shrink-0 w-64 bg-card rounded-3xl overflow-hidden shadow-card hover-lift text-left"
+            >
+              <div className="h-36 overflow-hidden">
+                <img src={p.img} alt={p.country} className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-display font-bold text-xl mt-4">{p.country}</h3>
-              <p className="font-display font-extrabold text-2xl text-brand-orange mt-1">{p.price}</p>
-            </div>
+              <div className="p-5">
+                <div className="w-10 h-10 rounded-2xl bg-brand-blue/15 text-brand-blue flex items-center justify-center">
+                  <Icon name={p.icon} size={20} />
+                </div>
+                <h3 className="font-display font-bold text-xl mt-3">{p.country}</h3>
+                <p className="font-display font-extrabold text-2xl text-brand-orange mt-1">{p.price}</p>
+              </div>
+            </button>
           ))}
         </div>
       </section>
@@ -327,6 +419,7 @@ const Index = () => {
             </button>
           ))}
         </div>
+
         {activeDir && (
           <div className="mt-8 animate-fade-up">
             <p className="text-center font-display font-bold text-xl mb-6">Туры · {activeDir}</p>
@@ -404,7 +497,7 @@ const Index = () => {
         <DialogContent className="rounded-3xl max-w-lg p-0 overflow-hidden">
           {selectedTour && (
             <>
-              <div className="relative h-48">
+              <div className="relative h-52">
                 <img src={selectedTour.img} alt={selectedTour.city} className="w-full h-full object-cover" />
                 <span className="absolute top-4 left-4 bg-brand-orange text-white text-xs font-bold px-3 py-1.5 rounded-full">{selectedTour.badge}</span>
               </div>
@@ -431,15 +524,13 @@ const Index = () => {
   );
 };
 
+// ─── ВСПОМОГАТЕЛЬНЫЕ КОМПОНЕНТЫ ──────────────────────────────────────────
 const TourCard = ({ t, onMore }: { t: Tour; onMore: () => void }) => (
   <div className="bg-card rounded-3xl overflow-hidden shadow-card hover-lift">
     <div className="relative h-52">
       <img src={t.img} alt={t.city} className="w-full h-full object-cover" />
       <span className="absolute top-4 left-4 bg-brand-orange text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
         <Icon name="Flame" size={14} /> {t.badge}
-      </span>
-      <span className="absolute top-4 right-4 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-brand-blue">
-        <Icon name="Info" size={16} />
       </span>
     </div>
     <div className="p-6">
