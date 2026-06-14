@@ -213,11 +213,12 @@ const Index = () => {
       {/* HEADER */}
       <header className="sticky top-0 z-50 bg-background/85 backdrop-blur-md border-b border-border/60">
         <div className="container flex items-center justify-between h-20">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-2xl bg-brand-orange flex items-center justify-center shadow-soft">
-              <Icon name="Plane" className="text-white" size={22} />
-            </div>
-            <span className="font-display font-extrabold text-xl tracking-tight">Тур Стори</span>
+          <div className="flex items-center bg-foreground rounded-2xl px-3 py-1.5">
+            <img
+              src="https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/bucket/947fbf93-ca22-4150-b62c-e5e5e991d654.png"
+              alt="Тур Стори"
+              className="h-12 w-auto object-contain"
+            />
           </div>
           <nav className="hidden md:flex items-center gap-8 font-medium">
             <button onClick={() => scrollTo('tours')} className="hover:text-brand-orange transition-colors">Туры</button>
@@ -226,7 +227,7 @@ const Index = () => {
             <button onClick={() => scrollTo('contacts')} className="hover:text-brand-orange transition-colors">Контакты</button>
           </nav>
           <div className="flex items-center gap-3">
-            <a href="tel:+78001234567" className="hidden lg:block font-display font-bold text-brand-orange">+7 800 123-45-67</a>
+            <a href="tel:+74957443863" className="hidden lg:block font-display font-bold text-brand-orange">+7 (495) 744-38-63</a>
             <Button asChild className="rounded-full bg-brand-blue hover:bg-brand-blue/90 text-white font-semibold gap-2">
               <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer">
                 <Icon name="MessageCircle" size={18} />
@@ -465,23 +466,25 @@ const Index = () => {
       <footer id="contacts" className="bg-foreground text-white/80">
         <div className="container py-14 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-2xl bg-brand-orange flex items-center justify-center">
-                <Icon name="Plane" className="text-white" size={20} />
-              </div>
-              <span className="font-display font-extrabold text-lg text-white">Тур Стори</span>
+            <div className="mb-4">
+              <img
+                src="https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/bucket/947fbf93-ca22-4150-b62c-e5e5e991d654.png"
+                alt="Тур Стори"
+                className="h-16 w-auto object-contain"
+              />
             </div>
             <p className="text-sm">Ваш надёжный проводник в мир ярких путешествий.</p>
           </div>
           <div>
             <h4 className="font-display font-bold text-white mb-4">Контакты</h4>
-            <p className="text-sm">+7 800 123-45-67</p>
-            <p className="text-sm mt-1">hello@turstory.ru</p>
+            <a href="tel:+74957443863" className="text-sm hover:text-white transition-colors">+7 (495) 744-38-63</a>
+            <br />
+            <a href="https://tour-story.ru" target="_blank" rel="noopener noreferrer" className="text-sm mt-1 hover:text-white transition-colors inline-block">tour-story.ru</a>
           </div>
           <div>
             <h4 className="font-display font-bold text-white mb-4">Адрес офиса</h4>
-            <p className="text-sm">Москва, ул. Тверская, 12</p>
-            <p className="text-sm mt-1">Ежедневно 10:00 — 20:00</p>
+            <p className="text-sm">Московская область, городской округ Балашиха, деревня Федурново, улица Авиарембаза, 8</p>
+            <p className="text-sm mt-2">Ежедневно 10:00 — 20:00</p>
           </div>
           <div>
             <h4 className="font-display font-bold text-white mb-4">Соцсети</h4>
