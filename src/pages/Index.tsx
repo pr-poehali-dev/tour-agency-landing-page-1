@@ -4,15 +4,37 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+
+const TELEGRAM_URL = 'https://t.me/tourstory_agency';
+const VK_URL = 'https://vk.ru/tourstory_agency';
+
+type Tour = {
+  country: string;
+  city: string;
+  nights: string;
+  price: string;
+  note: string;
+  img: string;
+  badge: string;
+  description: string;
+  region?: string;
+};
 
 const heroImg = 'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f2a257ab-31d3-45d0-9930-cc2f75f15328.jpg';
 const antalyaImg = 'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/045c3e28-3806-40bc-91bf-3c7d21074192.jpg';
 const dubaiImg = 'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/d81faa06-979e-47b3-97f8-8c2ada889aa8.jpg';
 
-const hotTours = [
-  { country: 'Турция', city: 'Анталия', nights: '7 ночей', price: '56 000 ₽', note: 'за двоих · вылет завтра', img: antalyaImg, badge: 'Горящий' },
-  { country: 'Египет', city: 'Хургада', nights: '5 ночей', price: '49 000 ₽', note: 'вылет через 3 дня', img: heroImg, badge: 'Выгодно' },
-  { country: 'ОАЭ', city: 'Дубай', nights: '7 ночей', price: '89 000 ₽', note: 'горящая путёвка', img: dubaiImg, badge: 'Хит' },
+const hotTours: Tour[] = [
+  { country: 'Турция', city: 'Анталия', nights: '7 ночей', price: '56 000 ₽', note: 'за двоих · вылет завтра', img: antalyaImg, badge: 'Горящий', region: 'Ближний Восток', description: 'Отель 5★ на первой линии с собственным песчаным пляжем. В стоимость входит перелёт, трансфер, проживание по системе «всё включено» и страховка. Вылет уже завтра из Москвы.' },
+  { country: 'Египет', city: 'Хургада', nights: '5 ночей', price: '49 000 ₽', note: 'вылет через 3 дня', img: heroImg, badge: 'Выгодно', region: 'Африка', description: 'Тёплое Красное море, коралловые рифы и отель 4★ с аквапарком. Включены перелёт, трансфер, питание «всё включено» и медстраховка. Идеально для семейного отдыха.' },
+  { country: 'ОАЭ', city: 'Дубай', nights: '7 ночей', price: '89 000 ₽', note: 'горящая путёвка', img: dubaiImg, badge: 'Хит', region: 'Ближний Восток', description: 'Роскошный отель в центре Дубая рядом с Burj Khalifa. Перелёт, трансфер, завтраки и экскурсия по городу в подарок. Шопинг, небоскрёбы и пустынное сафари.' },
+];
+
+const istanbulTours: Tour[] = [
+  { country: 'Турция', city: 'Стамбул', nights: '4 ночи', price: '38 000 ₽', note: 'отель 4★ в центре', img: heroImg, badge: 'Экскурсии', region: 'Европа', description: 'Обзорный тур по историческому центру: Голубая мечеть, Айя-София, дворец Топкапы и Гранд-базар. Отель 4★ в районе Султанахмет, завтраки включены, перелёт и трансфер.' },
+  { country: 'Турция', city: 'Стамбул', nights: '6 ночей', price: '54 000 ₽', note: 'шопинг-тур', img: antalyaImg, badge: 'Шопинг', region: 'Европа', description: 'Шопинг-тур с проживанием рядом с торговыми кварталами Таксим и Истикляль. Включены перелёт, трансфер, отель 4★ и завтраки. Время на покупки и прогулки по Босфору.' },
+  { country: 'Турция', city: 'Стамбул', nights: '5 ночей', price: '46 000 ₽', note: 'гастротур', img: dubaiImg, badge: 'Гастро', region: 'Европа', description: 'Гастрономический тур: дегустации турецкой кухни, кофейные церемонии и круиз по Босфору с ужином. Отель 4★, завтраки, перелёт и трансфер включены.' },
 ];
 
 const summerPlans = [
@@ -52,13 +74,44 @@ const seasonOffers = {
   winter: ['ОАЭ, Дубай — от 70 000 ₽', 'Таиланд, Пхукет — от 85 000 ₽', 'Мальдивы — от 120 000 ₽'],
 };
 
+const directionTours: Record<string, Tour[]> = {
+  'Европа': istanbulTours,
+  'Азия': [
+    { country: 'Таиланд', city: 'Пхукет', nights: '9 ночей', price: '85 000 ₽', note: 'отель 4★', img: heroImg, badge: 'Хит', description: 'Белоснежные пляжи Андаманского моря, отель 4★, перелёт и трансфер включены. Экзотические экскурсии на острова Пхи-Пхи.' },
+    { country: 'Вьетнам', city: 'Нячанг', nights: '10 ночей', price: '92 000 ₽', note: 'всё включено', img: antalyaImg, badge: 'Море', description: 'Долгий пляжный отдых на побережье Южно-Китайского моря с системой «всё включено». Перелёт, трансфер и страховка в стоимости.' },
+  ],
+  'Россия': [
+    { country: 'Россия', city: 'Сочи', nights: '7 ночей', price: '28 000 ₽', note: 'отель у моря', img: heroImg, badge: 'Бюджетно', description: 'Отдых на Черноморском побережье: отель рядом с пляжем, завтраки и трансфер. Прогулки по Красной Поляне и Олимпийскому парку.' },
+    { country: 'Россия', city: 'Алтай', nights: '6 ночей', price: '34 000 ₽', note: 'пешие походы', img: antalyaImg, badge: 'Активный', description: 'Пешие походы с гидом по горам Алтая, проживание на турбазе, питание и снаряжение включены. Природа, реки и чистый воздух.' },
+  ],
+  'Ближний Восток': hotTours.filter((t) => t.region === 'Ближний Восток'),
+  'Острова': [
+    { country: 'Мальдивы', city: 'Атолл Мале', nights: '7 ночей', price: '120 000 ₽', note: 'вилла над водой', img: heroImg, badge: 'Люкс', description: 'Бунгало над бирюзовой лагуной, белоснежные пляжи и снорклинг с черепахами. Перелёт, трансфер на катере и завтраки включены.' },
+  ],
+  'Африка': hotTours.filter((t) => t.region === 'Африка'),
+  'Круизы': [
+    { country: 'Средиземное море', city: 'Круиз', nights: '8 ночей', price: '98 000 ₽', note: 'лайнер 5★', img: dubaiImg, badge: 'Круиз', description: 'Морской круиз по Средиземноморью с заходом в Италию, Грецию и Испанию. Каюта на лайнере 5★, питание и развлечения включены.' },
+  ],
+  'Экскурсии': istanbulTours.filter((t) => t.badge === 'Экскурсии'),
+  'Лечение': [
+    { country: 'Чехия', city: 'Карловы Вары', nights: '10 ночей', price: '95 000 ₽', note: 'санаторий', img: antalyaImg, badge: 'СПА', description: 'Оздоровительный тур на термальный курорт: лечебные минеральные источники, СПА-процедуры и проживание в санатории. Перелёт включён.' },
+  ],
+};
+
 const Index = () => {
   const [people, setPeople] = useState(2);
   const [date, setDate] = useState<Date | undefined>();
   const [season, setSeason] = useState<'summer' | 'winter'>('summer');
   const [activeDir, setActiveDir] = useState<string | null>(null);
+  const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
+  const [showSearch, setShowSearch] = useState(false);
 
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+
+  const handleSearch = () => {
+    setShowSearch(true);
+    setTimeout(() => document.getElementById('search-results')?.scrollIntoView({ behavior: 'smooth' }), 50);
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -79,9 +132,11 @@ const Index = () => {
           </nav>
           <div className="flex items-center gap-3">
             <a href="tel:+78001234567" className="hidden lg:block font-display font-bold text-brand-orange">+7 800 123-45-67</a>
-            <Button className="rounded-full bg-brand-blue hover:bg-brand-blue/90 text-white font-semibold gap-2">
-              <Icon name="MessageCircle" size={18} />
-              <span className="hidden sm:inline">Мессенджеры</span>
+            <Button asChild className="rounded-full bg-brand-blue hover:bg-brand-blue/90 text-white font-semibold gap-2">
+              <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer">
+                <Icon name="MessageCircle" size={18} />
+                <span className="hidden sm:inline">Мессенджеры</span>
+              </a>
             </Button>
           </div>
         </div>
@@ -138,13 +193,25 @@ const Index = () => {
                   </button>
                 </div>
               </Field>
-              <Button className="h-11 rounded-xl bg-brand-orange hover:bg-brand-orange/90 text-white font-bold text-base gap-2 shadow-soft">
+              <Button onClick={handleSearch} className="h-11 rounded-xl bg-brand-orange hover:bg-brand-orange/90 text-white font-bold text-base gap-2 shadow-soft">
                 <Icon name="Search" size={18} /> Найти туры
               </Button>
             </div>
           </div>
         </div>
       </section>
+
+      {/* SEARCH RESULTS */}
+      {showSearch && (
+        <section id="search-results" className="container pt-16 md:pt-20 animate-fade-up">
+          <SectionTitle eyebrow="Результаты поиска" title="Туры в Стамбул" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+            {istanbulTours.map((t) => (
+              <TourCard key={t.city + t.nights} t={t} onMore={() => setSelectedTour(t)} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* HOT TOURS */}
       <section id="tours" className="container py-16 md:py-20">
@@ -169,7 +236,7 @@ const Index = () => {
                 <p className="text-muted-foreground text-sm mt-1">{t.nights} · {t.note}</p>
                 <div className="flex items-center justify-between mt-5">
                   <span className="font-display font-extrabold text-2xl text-brand-orange">{t.price}</span>
-                  <Button className="rounded-full bg-brand-blue hover:bg-brand-blue/90 text-white">Подробнее</Button>
+                  <Button onClick={() => setSelectedTour(t)} className="rounded-full bg-brand-blue hover:bg-brand-blue/90 text-white">Подробнее</Button>
                 </div>
               </div>
             </div>
@@ -261,8 +328,19 @@ const Index = () => {
           ))}
         </div>
         {activeDir && (
-          <div className="mt-6 bg-brand-blue/10 rounded-3xl p-6 text-center animate-fade-up">
-            <p className="font-semibold">Показываем туры по направлению «{activeDir}». Подбор скоро будет готов!</p>
+          <div className="mt-8 animate-fade-up">
+            <p className="text-center font-display font-bold text-xl mb-6">Туры · {activeDir}</p>
+            {directionTours[activeDir] && directionTours[activeDir].length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {directionTours[activeDir].map((t) => (
+                  <TourCard key={t.city + t.nights + t.price} t={t} onMore={() => setSelectedTour(t)} />
+                ))}
+              </div>
+            ) : (
+              <div className="bg-brand-blue/10 rounded-3xl p-6 text-center">
+                <p className="font-semibold">Скоро добавим туры по этому направлению. Оставьте заявку — подберём индивидуально!</p>
+              </div>
+            )}
           </div>
         )}
       </section>
@@ -272,8 +350,10 @@ const Index = () => {
         <div className="bg-brand-blue rounded-3xl p-10 md:p-14 text-center text-white shadow-soft">
           <h2 className="font-display font-extrabold text-3xl md:text-4xl">Не нашли подходящий тур?</h2>
           <p className="mt-3 text-white/90 max-w-xl mx-auto">Оставьте заявку — подберём идеальное путешествие под ваш бюджет и даты.</p>
-          <Button className="mt-7 h-12 px-8 rounded-full bg-white text-brand-blue hover:bg-white/90 font-bold text-base gap-2">
-            <Icon name="Send" size={18} /> Оставить заявку
+          <Button asChild className="mt-7 h-12 px-8 rounded-full bg-white text-brand-blue hover:bg-white/90 font-bold text-base gap-2">
+            <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer">
+              <Icon name="Send" size={18} /> Оставить заявку
+            </a>
           </Button>
         </div>
       </section>
@@ -303,9 +383,12 @@ const Index = () => {
           <div>
             <h4 className="font-display font-bold text-white mb-4">Соцсети</h4>
             <div className="flex gap-3">
-              {['Send', 'MessageCircle', 'Instagram', 'Youtube'].map((s) => (
-                <a key={s} href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-orange flex items-center justify-center transition-colors">
-                  <Icon name={s} size={18} className="text-white" />
+              {[
+                { icon: 'Send', url: TELEGRAM_URL, label: 'Telegram' },
+                { icon: 'Users', url: VK_URL, label: 'ВКонтакте' },
+              ].map((s) => (
+                <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={s.label} className="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-orange flex items-center justify-center transition-colors">
+                  <Icon name={s.icon} size={18} className="text-white" />
                 </a>
               ))}
             </div>
@@ -315,9 +398,63 @@ const Index = () => {
           © 2025 Тур Стори. Все права защищены.
         </div>
       </footer>
+
+      {/* TOUR DETAILS DIALOG */}
+      <Dialog open={!!selectedTour} onOpenChange={(o) => !o && setSelectedTour(null)}>
+        <DialogContent className="rounded-3xl max-w-lg p-0 overflow-hidden">
+          {selectedTour && (
+            <>
+              <div className="relative h-48">
+                <img src={selectedTour.img} alt={selectedTour.city} className="w-full h-full object-cover" />
+                <span className="absolute top-4 left-4 bg-brand-orange text-white text-xs font-bold px-3 py-1.5 rounded-full">{selectedTour.badge}</span>
+              </div>
+              <div className="p-6">
+                <DialogHeader>
+                  <DialogTitle className="font-display text-2xl">{selectedTour.country}, {selectedTour.city}</DialogTitle>
+                  <DialogDescription className="text-base text-foreground/70">{selectedTour.nights} · {selectedTour.note}</DialogDescription>
+                </DialogHeader>
+                <p className="mt-4 text-foreground/80 leading-relaxed">{selectedTour.description}</p>
+                <div className="flex items-center justify-between mt-6">
+                  <span className="font-display font-extrabold text-2xl text-brand-orange">{selectedTour.price}</span>
+                  <Button asChild className="rounded-full bg-brand-blue hover:bg-brand-blue/90 text-white gap-2">
+                    <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer">
+                      <Icon name="Send" size={18} /> Забронировать
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
+
+const TourCard = ({ t, onMore }: { t: Tour; onMore: () => void }) => (
+  <div className="bg-card rounded-3xl overflow-hidden shadow-card hover-lift">
+    <div className="relative h-52">
+      <img src={t.img} alt={t.city} className="w-full h-full object-cover" />
+      <span className="absolute top-4 left-4 bg-brand-orange text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
+        <Icon name="Flame" size={14} /> {t.badge}
+      </span>
+      <span className="absolute top-4 right-4 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-brand-blue">
+        <Icon name="Info" size={16} />
+      </span>
+    </div>
+    <div className="p-6">
+      <div className="flex items-baseline justify-between">
+        <h3 className="font-display font-bold text-xl">{t.country}</h3>
+        <span className="text-brand-blue font-semibold">{t.city}</span>
+      </div>
+      <p className="text-muted-foreground text-sm mt-1">{t.nights} · {t.note}</p>
+      <div className="flex items-center justify-between mt-5">
+        <span className="font-display font-extrabold text-2xl text-brand-orange">{t.price}</span>
+        <Button onClick={onMore} className="rounded-full bg-brand-blue hover:bg-brand-blue/90 text-white">Подробнее</Button>
+      </div>
+    </div>
+  </div>
+);
 
 const Field = ({ label, icon, children }: { label: string; icon: string; children: React.ReactNode }) => (
   <div>
