@@ -213,7 +213,7 @@ const Index = () => {
       {/* HEADER */}
       <header className="sticky top-0 z-50 bg-background/85 backdrop-blur-md border-b border-border/60">
         <div className="container flex items-center justify-between h-20">
-          <div className="flex items-center bg-foreground rounded-2xl px-3 py-1.5">
+          <div className="flex items-center rounded-2xl px-3 py-1.5" style={{ backgroundColor: '#7AA6D3' }}>
             <img
               src="https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/bucket/947fbf93-ca22-4150-b62c-e5e5e991d654.png"
               alt="Тур Стори"
