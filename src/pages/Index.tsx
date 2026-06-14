@@ -23,32 +23,42 @@ type Tour = {
 
 // ─── ИЗОБРАЖЕНИЯ ────────────────────────────────────────────────────────────
 const IMG = {
-  hero:      'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f2a257ab-31d3-45d0-9930-cc2f75f15328.jpg',
-  antalya:   'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/045c3e28-3806-40bc-91bf-3c7d21074192.jpg',
-  dubai:     'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/d81faa06-979e-47b3-97f8-8c2ada889aa8.jpg',
-  istanbul:  'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/925b7d4d-9a35-4799-abe5-5b85a50d3983.jpg',
-  pattaya:   'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/88287376-5851-471f-a83e-58409503328f.jpg',
-  bali:      'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/3f15f18f-9088-4ffa-9887-ca46496cf3b4.jpg',
-  sochi:     'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/03139531-e36b-4158-8b56-9d353b78f703.jpg',
-  altai:     'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f9f27043-5243-4f5d-80e2-ad4d29552911.jpg',
-  maldives:  'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/2f31ff99-ae4c-4ca6-a521-babe2756bef0.jpg',
-  rome:      'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/9d8668b0-352c-47f9-9393-313c4368326a.jpg',
-  paris:     'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/d1fc4153-ec95-4561-87e0-06cd300479dc.jpg',
-  santorini: 'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/12da17d0-3054-4fde-919e-0d7964bd6bf4.jpg',
-  spb:       'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/3eac0a75-4b6d-48ca-8ee8-11d6d1fea446.jpg',
-  moscow:    'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/122f4293-cb97-4735-aa3c-c0720837a22a.jpg',
-  kazan:     'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f0e294e1-3efd-42ef-9659-818f519a91ba.jpg',
-  saudi:     'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/715a3cf5-9248-499b-8ef2-a048bd6bc9ec.jpg',
-  africa:    'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/c1ada701-5b15-4cbf-9467-df95dbf5dde7.jpg',
-  cruise:    'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f3248e3d-6c61-42a4-ae85-2147c95ec068.jpg',
-  barcelona: 'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/6dcd7fed-a2cc-4cf7-8ae0-0214c862620d.jpg',
-  abkhazia:  'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f069e7b1-f9f1-4fa6-b65e-c77596cdec42.jpg',
+  hero:        'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f2a257ab-31d3-45d0-9930-cc2f75f15328.jpg',
+  antalya:     'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/045c3e28-3806-40bc-91bf-3c7d21074192.jpg',
+  dubai:       'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/d81faa06-979e-47b3-97f8-8c2ada889aa8.jpg',
+  istanbul:    'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/925b7d4d-9a35-4799-abe5-5b85a50d3983.jpg',
+  pattaya:     'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/88287376-5851-471f-a83e-58409503328f.jpg',
+  bali:        'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/3f15f18f-9088-4ffa-9887-ca46496cf3b4.jpg',
+  sochi:       'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/03139531-e36b-4158-8b56-9d353b78f703.jpg',
+  altai:       'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f9f27043-5243-4f5d-80e2-ad4d29552911.jpg',
+  maldives:    'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/2f31ff99-ae4c-4ca6-a521-babe2756bef0.jpg',
+  rome:        'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/9d8668b0-352c-47f9-9393-313c4368326a.jpg',
+  paris:       'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/d1fc4153-ec95-4561-87e0-06cd300479dc.jpg',
+  santorini:   'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/12da17d0-3054-4fde-919e-0d7964bd6bf4.jpg',
+  spb:         'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/3eac0a75-4b6d-48ca-8ee8-11d6d1fea446.jpg',
+  moscow:      'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/122f4293-cb97-4735-aa3c-c0720837a22a.jpg',
+  kazan:       'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f0e294e1-3efd-42ef-9659-818f519a91ba.jpg',
+  saudi:       'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/715a3cf5-9248-499b-8ef2-a048bd6bc9ec.jpg',
+  africa:      'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/c1ada701-5b15-4cbf-9467-df95dbf5dde7.jpg',
+  cruise:      'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f3248e3d-6c61-42a4-ae85-2147c95ec068.jpg',
+  barcelona:   'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/6dcd7fed-a2cc-4cf7-8ae0-0214c862620d.jpg',
+  abkhazia:    'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/f069e7b1-f9f1-4fa6-b65e-c77596cdec42.jpg',
+  // Новые
+  hurghada:    'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/a2d80c29-d68d-4887-a6d4-7c0861ebccf6.jpg',
+  gornoAltai:  'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/babce65b-9641-4661-a704-e9f90981831c.jpg',
+  chemal:      'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/9d043726-a939-404d-abeb-5ecd43264317.jpg',
+  thailand:    'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/eb4b7a01-b20b-48fe-b91c-3ec23a63655d.jpg',
+  baliUbud:    'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/44ef1759-e0b2-482d-9950-fc4ba617638c.jpg',
+  safari:      'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/693d3f3b-e6df-4fb6-9e93-ac4335a928a1.jpg',
+  fjord:       'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/b41022c0-823b-454f-a539-706065399e17.jpg',
+  madrid:      'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/5a55b3c8-c519-43b7-ae0a-abf863fef428.jpg',
+  karlovyVary: 'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/0d47ce93-c4f9-467c-a53c-69a7de2d09db.jpg',
 };
 
 // ─── ГОРЯЩИЕ ТУРЫ ─────────────────────────────────────────────────────────
 const hotTours: Tour[] = [
   { country: 'Турция', city: 'Анталия', nights: '7 ночей', price: '56 000 ₽', note: 'за двоих · вылет завтра', img: IMG.antalya, badge: 'Горящий', region: 'Ближний Восток', description: 'Отель 5★ на первой линии с собственным песчаным пляжем. В стоимость входит перелёт, трансфер, проживание по системе «всё включено» и страховка. Вылет уже завтра из Москвы.' },
-  { country: 'Египет', city: 'Хургада', nights: '5 ночей', price: '49 000 ₽', note: 'вылет через 3 дня', img: IMG.hero, badge: 'Выгодно', region: 'Африка', description: 'Тёплое Красное море, коралловые рифы и отель 4★ с аквапарком. Включены перелёт, трансфер, питание «всё включено» и медстраховка. Идеально для семейного отдыха.' },
+  { country: 'Египет', city: 'Хургада', nights: '5 ночей', price: '49 000 ₽', note: 'вылет через 3 дня', img: IMG.hurghada, badge: 'Выгодно', region: 'Африка', description: 'Тёплое Красное море, коралловые рифы и отель 4★ с аквапарком. Включены перелёт, трансфер, питание «всё включено» и медстраховка. Идеально для семейного отдыха.' },
   { country: 'ОАЭ', city: 'Дубай', nights: '7 ночей', price: '89 000 ₽', note: 'горящая путёвка', img: IMG.dubai, badge: 'Хит', region: 'Ближний Восток', description: 'Роскошный отель в центре Дубая рядом с Burj Khalifa. Перелёт, трансфер, завтраки и экскурсия по городу в подарок. Шопинг, небоскрёбы и пустынное сафари.' },
 ];
 
@@ -70,8 +80,8 @@ const summerPlanTours: Record<string, Tour[]> = {
     { country: 'Мальдивы', city: 'Атолл Ари', nights: '10 ночей', price: '140 000 ₽', note: 'люкс · раннее бронирование', img: IMG.maldives, badge: 'Люкс', description: 'Эксклюзивный резорт 5★ с собственным рифом. Бунгало на воде с панорамными окнами, дайвинг, СПА и изысканная кухня. Раннее бронирование — лучшее размещение по сниженной цене.' },
   ],
   'Алтай': [
-    { country: 'Россия', city: 'Горно-Алтайск', nights: '7 ночей', price: '38 000 ₽', note: 'треккинг с гидом', img: IMG.altai, badge: 'Поход', description: 'Пешие маршруты по горному Алтаю с опытным гидом: ледники, альпийские луга и водопады. Проживание на турбазе, питание и снаряжение входят в стоимость. Маршруты для разных уровней подготовки.' },
-    { country: 'Россия', city: 'Чемал', nights: '5 ночей', price: '29 000 ₽', note: 'экстрим и природа', img: IMG.altai, badge: 'Экстрим', description: 'Рафтинг по горным рекам, конные прогулки и восхождения. Уютные домики в горах, костёр, свежий воздух и звёздное небо. Идеально для любителей активного отдыха.' },
+    { country: 'Россия', city: 'Горно-Алтайск', nights: '7 ночей', price: '38 000 ₽', note: 'треккинг с гидом', img: IMG.gornoAltai, badge: 'Поход', description: 'Столица Республики Алтай — ворота в горный мир. Пешие маршруты по тайге и альпийским лугам с опытным гидом. Проживание на турбазе в окружении гор, питание и снаряжение включены. Маршруты для разных уровней подготовки.' },
+    { country: 'Россия', city: 'Чемал', nights: '5 ночей', price: '29 000 ₽', note: 'экстрим и природа', img: IMG.chemal, badge: 'Экстрим', description: 'Чемал — жемчужина Алтая на слиянии рек Катунь и Чемал. Рафтинг по бирюзовой Катуни, конные прогулки вдоль берега и восхождения на скалы. Уютные домики в горах, свежий воздух и звёздное небо без городской засветки.' },
   ],
 };
 
@@ -123,8 +133,8 @@ const directionTours: Record<string, Tour[]> = {
     { country: 'Греция', city: 'Санторини', nights: '7 ночей', price: '78 000 ₽', note: 'острова Эгейского моря', img: IMG.santorini, badge: 'Острова', description: 'Белоснежные домики с синими куполами над Эгейским морем, вулканические пляжи и знаменитые закаты в Ойе. Отель 4★, завтраки, перелёт и трансфер.' },
   ],
   'Азия': [
-    { country: 'Таиланд', city: 'Пхукет', nights: '9 ночей', price: '85 000 ₽', note: 'отель 4★', img: IMG.bali, badge: 'Хит', description: 'Белоснежные пляжи Андаманского моря, снорклинг на островах Пхи-Пхи, тайский массаж и уличная кухня. Отель 4★, перелёт и трансфер включены.' },
-    { country: 'Индонезия', city: 'Бали', nights: '10 ночей', price: '92 000 ₽', note: 'сёрфинг и йога', img: IMG.bali, badge: 'Активный', description: 'Остров богов: рисовые террасы Убуда, волны Куты, храмы на закате. Вилла с бассейном 4★, перелёт, трансфер и страховка в стоимости.' },
+    { country: 'Таиланд', city: 'Пхукет', nights: '9 ночей', price: '85 000 ₽', note: 'отель 4★', img: IMG.thailand, badge: 'Хит', description: 'Белоснежные пляжи Андаманского моря, скалы-карсты на горизонте и снорклинг на островах Пхи-Пхи. Тайский массаж, уличный фуд и ночные рынки. Отель 4★, перелёт и трансфер включены.' },
+    { country: 'Индонезия', city: 'Бали', nights: '10 ночей', price: '92 000 ₽', note: 'сёрфинг и йога', img: IMG.baliUbud, badge: 'Активный', description: 'Остров богов: изумрудные рисовые террасы Убуда, церемонии в древних храмах, волны Куты и закаты в Улувату. Вилла с бассейном 4★, перелёт, трансфер и страховка в стоимости.' },
   ],
   'Россия': [
     { country: 'Россия', city: 'Санкт-Петербург', nights: '4 ночи', price: '32 000 ₽', note: 'культурная столица', img: IMG.spb, badge: 'Культура', description: 'Эрмитаж, Петергоф, Исаакиевский собор и белые ночи. Отель 4★ в центре, завтраки и экскурсия с гидом. Жемчужина России на Неве.' },
@@ -140,19 +150,19 @@ const directionTours: Record<string, Tour[]> = {
     { country: 'Греция', city: 'Санторини', nights: '6 ночей', price: '78 000 ₽', note: 'острова Эгейского моря', img: IMG.santorini, badge: 'Острова', description: 'Вулканические пляжи с красным и чёрным песком, знаменитые закаты в Ойе и вина местных виноградников. Отель 4★, завтраки и перелёт.' },
   ],
   'Африка': [
-    { country: 'Египет', city: 'Хургада', nights: '5 ночей', price: '49 000 ₽', note: 'Красное море', img: IMG.hero, badge: 'Пляж', description: 'Тёплое Красное море с богатейшим подводным миром, коралловые рифы, отель 4★ с аквапарком. Перелёт, трансфер и питание «всё включено».' },
-    { country: 'Кения', city: 'Масаи Мара', nights: '8 ночей', price: '145 000 ₽', note: 'сафари', img: IMG.africa, badge: 'Сафари', description: 'Сафари в самом знаменитом заповеднике Африки: большая пятёрка, миграция гну, закат над саванной. Лодж в национальном парке, перелёт и гид включены.' },
+    { country: 'Египет', city: 'Хургада', nights: '5 ночей', price: '49 000 ₽', note: 'Красное море', img: IMG.hurghada, badge: 'Пляж', description: 'Хургада — главный курорт Красного моря с тёплой водой круглый год. Коралловые рифы в шаговой доступности, отель 4★ с аквапарком и анимацией. Перелёт, трансфер и питание «всё включено».' },
+    { country: 'Кения', city: 'Масаи Мара', nights: '8 ночей', price: '145 000 ₽', note: 'сафари', img: IMG.safari, badge: 'Сафари', description: 'Сафари в легендарном заповеднике Кении: львы, слоны, жирафы и знаменитая миграция гну. Джип-туры на рассвете, закат над саванной с акациями. Лодж в национальном парке, перелёт и русскоязычный гид включены.' },
   ],
   'Круизы': [
-    { country: 'Средиземное море', city: 'Круиз Италия–Греция', nights: '8 ночей', price: '98 000 ₽', note: 'лайнер 5★', img: IMG.cruise, badge: 'Круиз', description: 'Морской круиз на лайнере 5★ с заходом в Рим, Барселону, Афины и острова Греции. Каюта с иллюминатором, питание и развлечения на борту включены.' },
-    { country: 'Норвегия', city: 'Фьорды Норвегии', nights: '7 ночей', price: '120 000 ₽', note: 'северное сияние', img: IMG.cruise, badge: 'Природа', description: 'Круиз по норвежским фьордам с шансом увидеть северное сияние. Города Берген и Тромсё, водопады и горные пейзажи. Каюта с видом, питание включено.' },
+    { country: 'Средиземное море', city: 'Круиз Италия–Греция', nights: '8 ночей', price: '98 000 ₽', note: 'лайнер 5★', img: IMG.cruise, badge: 'Круиз', description: 'Морской круиз на лайнере 5★ с заходом в Рим, Барселону, Афины и острова Греции. Каюта с иллюминатором, питание «полный пансион» и развлечения на борту включены.' },
+    { country: 'Норвегия', city: 'Фьорды Норвегии', nights: '7 ночей', price: '120 000 ₽', note: 'северное сияние', img: IMG.fjord, badge: 'Природа', description: 'Круиз по норвежским фьордам на небольшом экспедиционном судне: водопады прямо со скал, города Берген и Тромсё, шанс увидеть северное сияние. Каюта с панорамным видом, питание включено.' },
   ],
   'Экскурсии': [
     { country: 'Испания', city: 'Барселона', nights: '6 ночей', price: '82 000 ₽', note: 'архитектура и культура', img: IMG.barcelona, badge: 'Экскурсия', description: 'Саграда Фамилия, Парк Гуэль, Готический квартал и пляж Барселонета. Экскурсионный тур с русскоязычным гидом, отель 4★ в центре, перелёт и завтраки.' },
-    { country: 'Испания', city: 'Мадрид + Толедо', nights: '5 ночей', price: '75 000 ₽', note: 'история Испании', img: IMG.barcelona, badge: 'История', description: 'Прадо, дворец Буэн-Ретиро, корида и средневековый Толедо. Тур с гидом по двум столицам испанской истории. Отель 4★, завтраки и перелёт включены.' },
+    { country: 'Испания', city: 'Мадрид + Толедо', nights: '5 ночей', price: '75 000 ₽', note: 'история Испании', img: IMG.madrid, badge: 'История', description: 'Королевский дворец, музей Прадо, площадь Пуэрта-дель-Соль и средневековый Толедо на берегу Тахо. Тур с гидом по двум столицам испанской истории. Отель 4★, завтраки и перелёт включены.' },
   ],
   'Лечение': [
-    { country: 'Чехия', city: 'Карловы Вары', nights: '10 ночей', price: '95 000 ₽', note: 'санаторий', img: IMG.paris, badge: 'СПА', description: 'Лечебные минеральные источники, питьевые галереи и процедуры в санаториях Карловых Вар. Перелёт, проживание в санатории с питанием 3 раза в день.' },
+    { country: 'Чехия', city: 'Карловы Вары', nights: '10 ночей', price: '95 000 ₽', note: 'санаторий', img: IMG.karlovyVary, badge: 'СПА', description: 'Карловы Вары — знаменитый чешский курорт с 12 лечебными минеральными источниками. Колоннады, питьевые галереи и вековые традиции водолечения. Проживание в санатории с питанием 3 раза в день, лечебные процедуры по программе и перелёт из Москвы.' },
   ],
 };
 
