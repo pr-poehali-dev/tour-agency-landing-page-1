@@ -55,6 +55,14 @@ const IMG = {
   karlovyVary: 'https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/files/0d47ce93-c4f9-467c-a53c-69a7de2d09db.jpg',
 };
 
+// ─── ДИСКОНТНЫЕ ТУРЫ (от которых отказались клиенты) ─────────────────────
+const discountTours: Tour[] = [
+  { country: 'Греция', city: 'Санторини', nights: '7 ночей', price: '52 000 ₽', note: 'было 78 000 ₽ · −33%', img: IMG.santorini, badge: 'Дисконт', description: 'Клиент отказался от брони за 5 дней до вылета. Отель 4★ с видом на кальдеру, завтраки, перелёт и трансфер — всё включено. Вылет через 5 дней из Москвы.' },
+  { country: 'Таиланд', city: 'Пхукет', nights: '9 ночей', price: '58 000 ₽', note: 'было 85 000 ₽ · −32%', img: IMG.thailand, badge: 'Дисконт', description: 'Готовая бронь — отказ по личным обстоятельствам. Отель 4★ на пляже Патонг, перелёт, трансфер и страховка уже оформлены. Вылет через 7 дней.' },
+  { country: 'Италия', city: 'Рим', nights: '5 ночей', price: '61 000 ₽', note: 'было 89 000 ₽ · −31%', img: IMG.rome, badge: 'Дисконт', description: 'Экскурсионный тур: Колизей, Ватикан, Фонтан Треви. Отель 4★ в историческом центре, завтраки, перелёт и русскоязычный гид — бронь уже оплачена, место свободно.' },
+  { country: 'Мальдивы', city: 'Атолл Мале', nights: '7 ночей', price: '84 000 ₽', note: 'было 120 000 ₽ · −30%', img: IMG.maldives, badge: 'Дисконт', description: 'Люкс-бунгало над бирюзовой лагуной — клиент отказался за 4 дня до вылета. Вилла 5★, завтраки, трансфер на катере и перелёт Москва–Мале. Редкая возможность!' },
+];
+
 // ─── ГОРЯЩИЕ ТУРЫ ─────────────────────────────────────────────────────────
 const hotTours: Tour[] = [
   { country: 'Турция', city: 'Анталия', nights: '7 ночей', price: '56 000 ₽', note: 'за двоих · вылет завтра', img: IMG.antalya, badge: 'Горящий', region: 'Ближний Восток', description: 'Отель 5★ на первой линии с собственным песчаным пляжем. В стоимость входит перелёт, трансфер, проживание по системе «всё включено» и страховка. Вылет уже завтра из Москвы.' },
@@ -193,6 +201,7 @@ const Index = () => {
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
   const [showSearch, setShowSearch] = useState(false);
   const [activeSummer, setActiveSummer] = useState<string | null>(null);
+  const [showAbout, setShowAbout] = useState(false);
 
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
@@ -222,7 +231,7 @@ const Index = () => {
           </div>
           <nav className="hidden md:flex items-center gap-8 font-medium">
             <button onClick={() => scrollTo('tours')} className="hover:text-brand-orange transition-colors">Туры</button>
-            <button onClick={() => scrollTo('about')} className="hover:text-brand-orange transition-colors">О нас</button>
+            <button onClick={() => setShowAbout(true)} className="hover:text-brand-orange transition-colors">О нас</button>
             <button onClick={() => scrollTo('reviews')} className="hover:text-brand-orange transition-colors">Отзывы</button>
             <button onClick={() => scrollTo('contacts')} className="hover:text-brand-orange transition-colors">Контакты</button>
           </nav>
@@ -316,6 +325,26 @@ const Index = () => {
           {hotTours.map((t) => (
             <TourCard key={t.country + t.city} t={t} onMore={() => setSelectedTour(t)} />
           ))}
+        </div>
+      </section>
+
+      {/* DISCOUNT TOURS */}
+      <section className="bg-red-50 dark:bg-red-950/20 py-16 md:py-20">
+        <div className="container">
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <span className="inline-flex items-center gap-1.5 bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">
+              <Icon name="Tag" size={13} /> Дисконт
+            </span>
+          </div>
+          <SectionTitle eyebrow="Клиенты отказались — ваша выгода" title="Дисконтные туры" />
+          <p className="text-center text-muted-foreground mt-3 max-w-xl mx-auto">
+            Готовые брони, от которых отказались другие клиенты. Перелёт и отель уже оплачены — берёте по сниженной цене.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+            {discountTours.map((t) => (
+              <DiscountTourCard key={t.country + t.city} t={t} onMore={() => setSelectedTour(t)} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -505,6 +534,63 @@ const Index = () => {
         </div>
       </footer>
 
+      {/* ABOUT DIALOG */}
+      <Dialog open={showAbout} onOpenChange={setShowAbout}>
+        <DialogContent className="rounded-3xl max-w-2xl p-0 overflow-hidden">
+          <div className="relative h-52">
+            <img src={IMG.hero} alt="Тур Стори" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+              <div className="flex items-center gap-3">
+                <div className="rounded-2xl px-3 py-2" style={{ backgroundColor: '#7AA6D3' }}>
+                  <img src="https://cdn.poehali.dev/projects/52386eab-c83f-484c-ba86-8e6a1d74b203/bucket/947fbf93-ca22-4150-b62c-e5e5e991d654.png" alt="Тур Стори" className="h-10 w-auto object-contain" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="p-6 md:p-8">
+            <DialogHeader>
+              <DialogTitle className="font-display text-2xl">О турагентстве Тур Стори</DialogTitle>
+            </DialogHeader>
+            <div className="mt-4 space-y-3 text-foreground/80 leading-relaxed text-sm">
+              <p>
+                <strong>Тур Стори</strong> — туристическое агентство, которое помогает людям находить лучший отдых по лучшим ценам. Мы работаем с проверенными операторами и отелями по всему миру, чтобы каждое путешествие было комфортным и незабываемым.
+              </p>
+              <p>
+                Наши специалисты подбирают туры индивидуально: учитывают бюджет, даты, предпочтения и любые пожелания. Мы занимаемся всеми формальностями — от бронирования до страховки и визовой поддержки.
+              </p>
+              <p>
+                В нашем портфолио — пляжный отдых, экскурсионные туры, горные походы, круизы, сафари и лечебные программы. Работаем с 2018 года, помогли тысячам клиентов осуществить мечту о путешествии.
+              </p>
+            </div>
+            <div className="grid grid-cols-3 gap-4 mt-6">
+              {[
+                { icon: 'Users', label: 'Клиентов', value: '5 000+' },
+                { icon: 'Globe', label: 'Направлений', value: '80+' },
+                { icon: 'Star', label: 'Лет на рынке', value: '7' },
+              ].map((s) => (
+                <div key={s.label} className="bg-muted rounded-2xl p-4 text-center">
+                  <Icon name={s.icon} size={22} className="text-brand-orange mx-auto mb-1" />
+                  <p className="font-display font-extrabold text-xl">{s.value}</p>
+                  <p className="text-xs text-muted-foreground">{s.label}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <Button asChild className="flex-1 rounded-full bg-brand-orange hover:bg-brand-orange/90 text-white gap-2">
+                <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer">
+                  <Icon name="Send" size={18} /> Написать нам
+                </a>
+              </Button>
+              <Button asChild variant="outline" className="flex-1 rounded-full gap-2">
+                <a href="tel:+74957443863">
+                  <Icon name="Phone" size={18} /> +7 (495) 744-38-63
+                </a>
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
       {/* TOUR DETAILS DIALOG */}
       <Dialog open={!!selectedTour} onOpenChange={(o) => !o && setSelectedTour(null)}>
         <DialogContent className="rounded-3xl max-w-lg p-0 overflow-hidden">
@@ -559,6 +645,29 @@ const TourCard = ({ t, onMore }: { t: Tour; onMore: () => void }) => (
     </div>
   </div>
 );
+
+const DiscountTourCard = ({ t, onMore }: { t: Tour; onMore: () => void }) => {
+  const [oldPrice] = t.note.split(' · ');
+  return (
+    <div className="bg-card rounded-3xl overflow-hidden shadow-card hover-lift border-2 border-red-200 dark:border-red-800/40">
+      <div className="relative h-44">
+        <img src={t.img} alt={t.city} className="w-full h-full object-cover" />
+        <span className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
+          <Icon name="Tag" size={13} /> Дисконт
+        </span>
+      </div>
+      <div className="p-5">
+        <h3 className="font-display font-bold text-lg">{t.country}, {t.city}</h3>
+        <p className="text-muted-foreground text-xs mt-1">{t.nights}</p>
+        <div className="mt-3 flex items-baseline gap-2">
+          <span className="font-display font-extrabold text-xl text-red-500">{t.price}</span>
+          <span className="text-xs text-muted-foreground line-through">{oldPrice.replace('было ', '')}</span>
+        </div>
+        <Button onClick={onMore} className="w-full mt-4 rounded-full bg-red-500 hover:bg-red-600 text-white text-sm">Подробнее</Button>
+      </div>
+    </div>
+  );
+};
 
 const Field = ({ label, icon, children }: { label: string; icon: string; children: React.ReactNode }) => (
   <div>
